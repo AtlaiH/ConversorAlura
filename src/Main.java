@@ -15,6 +15,14 @@ public class Main {
         }
 
     }
+    public static void solicitudCambio(String moneda, String mmonedaCambio, double monto){
+        ConexionAPI conexion = new ConexionAPI();
+        try{
+            conexion.conexion(moneda, mmonedaCambio, monto);
+        }catch(Exception e){
+            System.out.println("Solo se permiten numeros.");
+        }
+    }
 
     public static void acciones() {
         while (true) {
@@ -33,6 +41,10 @@ public class Main {
             switch (seleccion) {
                 case 1:
                     System.out.println("Usted ha seleccionado Dólar ==> Peso Argentino");
+                    System.out.println("Cuanto es el monto a cambiar");
+                    Scanner scan = new Scanner(System.in);
+                    double monto = scan.nextDouble();
+                    solicitudCambio("USD", "ARS", monto);
                     break;
                 case 2:
                     System.out.println("Usted ha seleccionado Peso Argentino ==> Dolar");
